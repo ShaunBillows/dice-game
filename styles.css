@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-size: large;
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#overlay {
+  background-color: white;
+  z-index: 5;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 25vh 0vw;
+
+  /* border: 2px solid; */
+}
+
+.game-stats {
+
+  width: 80vw;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* border: 2px solid; */
+}
+.game-stat-item {
+  width: 30vw;
+
+  /* font-weight: bold; */
+  /* font-size: 3rem; */
+
+
+  /* border: 2px solid; */
+}
+
+.high-score {
+  text-align: start;
+
+  /* border: 2px solid;   */
+}
+
+.high-score-value {
+  /* text-align: start; */
+
+  width: 5em;
+
+  /* border: 2px solid;   */
+}
+
+.info {
+  text-align: end;
+  cursor: pointer;
+  /* border: 2px solid;   */
+}
+
+img {
+  height: 1.5rem;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 52px;
+}
+
+.dice-container {
+  width: 80vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* border: 2px solid; */
+}
+
+/* game dice */
+
+.scene {
+  width:10em;
+  height:10em;
+  perspective:10em;
+
+  /* border: 2px solid; */
+}
+
+.dice {
+  width:100%;
+  height:100%;
+  position:relative;
+
+  /* animation: spinning 2s infinite; */;
+  transform-style:preserve-3d;
+
+  animation-name: spinning;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+
+  cursor: pointer;
+}
+
+.face {
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-size: cover;
+}
+
+.front  { 
+  transform: rotateY(0deg) translateZ(5em); 
+  background-image: url("./images/dice-1.png");
+}
+
+.right  { 
+  background-image: url("./images/dice-2.png");
+  transform: rotateY(90deg) translateZ(5em);  
+}
+
+.left { 
+  background-image: url("./images/dice-6.png");
+  transform: rotateY(-90deg) translateZ(5em); 
+}
+
+.back { 
+  background-image: url("./images/dice-4.png");;
+  transform: rotateY(180deg) translateZ(5em); 
+}
+
+@keyframes spinning {
+  from  { transform: translateZ(-5em) rotateY(0deg); }
+  to    { transform: translateZ(-5em) rotateY(360deg); }
+}
+
+/* first dice */
+
+/* .die-start {
+  animation: spinning 3s infinite;
+}
+
+.front  { 
+  transform: rotateY(0deg) translateZ(5em); 
+  background-image: url("./images/dice-1.png");
+}
+
+.right  { 
+  background-image: url("./images/dice-2.png");
+  transform: rotateY(90deg) translateZ(5em);  
+}
+
+.left { 
+  background-image: url("./images/dice-6.png");
+  transform: rotateY(-90deg) translateZ(5em); 
+}
+
+.back { 
+  background-image: url("./images/dice-4.png");;
+  transform: rotateY(180deg) translateZ(5em); 
+} */

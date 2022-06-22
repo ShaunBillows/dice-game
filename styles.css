@@ -2,22 +2,12 @@
 
 * {
   font-family: 'Poppins', sans-serif;
-  font-size: large;
+  /* font-size: large; */
   margin: 0;
   padding: 0;
 
   text-align: center;
   box-sizing: border-box;
-}
-
-#overlay {
-  background-color: white;
-  z-index: 5;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .game {
@@ -36,9 +26,15 @@
 
 .game-stats {
 
+  font-size: x-large;
+  font-weight: bold;
+
   width: 80vw;
+  height: 25vh;
 
   display: flex;
+
+
   justify-content: space-between;
 
   /* border: 2px solid; */
@@ -67,20 +63,47 @@
   /* border: 2px solid;   */
 }
 
+.score {
+  padding-bottom: 3rem;
+
+  font-weight: bold;
+  font-size: 60px;
+
+  align-self: flex-end;
+  
+}
+
 .info {
   text-align: end;
-  cursor: pointer;
+  padding: 0.5rem 2.5rem;
+
   /* border: 2px solid;   */
+
+}
+
+.info-message {
+  /* height: 20vh; */
+  max-width: 400px;
+
+  position: absolute;
+
+  /* border: 2px solid; */
+
+  top: 15vh;
+
+  display: none;
+
+  z-index: -1;
+
 }
 
 img {
-  height: 1.5rem;
+  height: 2.5rem;
+
+  cursor: pointer;
+    /* border: 2px solid;   */
 }
 
-.score {
-  font-weight: bold;
-  font-size: 52px;
-}
 
 .dice-container {
   width: 80vw;
@@ -149,28 +172,50 @@ img {
   to    { transform: translateZ(-5em) rotateY(360deg); }
 }
 
-/* first dice */
+/* initial screen dice and overlay */
 
-/* .die-start {
-  animation: spinning 3s infinite;
+#overlay {
+  background-color: white;
+  z-index: 5;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 10vh;
 }
 
-.front  { 
-  transform: rotateY(0deg) translateZ(5em); 
+.welcome {
+  font-size: 50px;
+  position: absolute;
+  top: 30%;
+}
+
+.dice-start {
+/* 
+  width:100%;
+  height:100%;
+  position:relative; */
+
+  /* transform-style:preserve-3d; */
+  animation: spinning 3s infinite both;
+
+  /* cursor: pointer; */
+}
+
+.f-start  { 
+  background-image: url("./images/dice-6.png");
+}
+
+.r-start{ 
   background-image: url("./images/dice-1.png");
 }
 
-.right  { 
-  background-image: url("./images/dice-2.png");
-  transform: rotateY(90deg) translateZ(5em);  
+.l-start { 
+  background-image: url("./images/dice-4.png");
 }
 
-.left { 
-  background-image: url("./images/dice-6.png");
-  transform: rotateY(-90deg) translateZ(5em); 
+.b-start { 
+  background-image: url("./images/dice-2.png");;
 }
-
-.back { 
-  background-image: url("./images/dice-4.png");;
-  transform: rotateY(180deg) translateZ(5em); 
-} */

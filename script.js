@@ -5,6 +5,20 @@ const background = document.querySelector(".game")
 const score_ = document.querySelector(".score")
 const highScore_ = document.querySelector(".high-score-value")
 
+const infoMessage = document.querySelector(".info-message")
+const infoIcon = document.querySelector(".info-icon")
+infoMessageShowing = false
+
+infoIcon.addEventListener("click", () => {
+    if (infoMessageShowing) {
+        infoMessageShowing = false
+        infoMessage.style.display = 'none'
+    } else {
+        infoMessageShowing = true
+        infoMessage.style.display = 'block'
+    }
+})
+
 // game stats
 let score = 0
 let highScore = 0
@@ -25,6 +39,7 @@ const options = {
 // console.log(Array.from(Array(6).keys()).map(i => `url("./images/dice-${i+1}.png")`))
 
 // dice game
+
 for (let i=0; i<dice.length; i++) {
 
     dice[i].addEventListener("click", () => {
@@ -35,8 +50,8 @@ for (let i=0; i<dice.length; i++) {
 
         if (diceRoll == 1) {
 
-            setTimeout(()=>{ 
-
+            setTimeout( ()=>{ 
+                
                 flashScreen()
                 replayAllAnimations()
                 checkHighScore()
@@ -65,23 +80,13 @@ function incrementScore() {
     score_.innerHTML = score
 }
 
-// function checkForOne() {
-//     if (diceRoll == 1) {
-//         return true
-//     }
-//     return false
-// }
-
 // gameover functions
 
-// function gameOver() {
-//     flashScreen()
-//     replayAllAnimations()
-//     checkHighScore()
-//     resetScore()
-// }
-
 function flashScreen() {
+    // fix to stop the screen flashing when the initial, homescreen die is click
+    if (firstClick) {
+        return
+    }
     background.style.background = 'red'
     setTimeout( () => {
         background.style.background = 'none'
@@ -107,42 +112,13 @@ function checkHighScore() {
     }
 }
 
-
-// function rollDice(frontFace) {
-//     diceRoll = Math.floor(Math.random() * Object.keys(options).length + 1)
-//         // randomise the front cube face
-//     frontFace.style.backgroundImage = options[diceRoll]
-//         // increment score
-//     score += diceRoll
-//     score_.innerHTML = score
-//         // check for 1
-//     if (diceRoll == 1) {
-//         setTimeout( () => {
-//             gameOver()
-//         }, 1000)
-//     }
-// }
-
-// function gameOver() {
-//     background.style.background = 'red'
-//     setTimeout( () => {
-//         background.style.background = 'none'
-//     }, 300)
-//     for (let i=0; i<Object.keys(dice).length; i++) {
-//         replayAnimation(dice[i])
-//         front[i].style.backgroundImage = options[1]
-//     }
-//     checkHighScore()
-//     score = 0
-//     score_.innerHTML = 0
-// }
-
-// const checkHighScore = () => {
-//     // console.log(score.innerHTML)
-//     // console.log(highScore.innerHTML)
-//     // highScore.innerHTML = score.innerHTML
-//     if (score > highScore) {
-//         highScore = score
-//         highScore_.innerHTML = score
-//     }
-// }
+// overlay
+firstClick = true
+window.addEventListener('click', () => {
+    overlay.style.display = "none";
+    if (firstClick) {
+        replayAllAnimations()
+        resetScore()
+        firstClick = false
+    }
+})

@@ -61,7 +61,7 @@ for (let i=0; i<dice.length; i++) {
             setTimeout( () => {
                 
                 // winning functions
-                flashScreen('green', 600)
+                flashScreen('green', 300)
                 replayAllAnimations()
                 youWinAlert()
                 resetScore()    
@@ -143,7 +143,7 @@ function resetDiceStates() {
 // you win functions
 
 function youWinAlert() {
-    alert("YOU WIN!")
+    modal.style.display = "flex"
 }
 
 function updateWinCount() {
@@ -179,4 +179,12 @@ infoIcon.addEventListener("click", () => {
         infoMessageShowing = true
         infoMessage.style.display = 'block'
     }
+})
+
+// close modal
+const modelClose =  document.querySelector(".close")
+const modal = document.querySelector(".modal")
+
+modelClose.addEventListener("click", () => {
+    modal.style.display = "none"
 })

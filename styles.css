@@ -8,7 +8,7 @@
   text-align: center;
   box-sizing: border-box;
 
-  outline: 1px solid limegreen !important;
+  /* outline: 1px solid limegreen !important; */
   /* background-color: grey; */
 }
 
@@ -30,7 +30,7 @@
 
 .game-stats {
 
-  font-size: x-large;
+  /* font-size: x-large; */
   font-weight: bold;
 
   width: 80vw;
@@ -53,16 +53,19 @@
   /* border: 2px solid; */
 }
 
-.win-count {
+.win-count h2{
   text-align: start;
 
   /* border: 2px solid;   */
 }
 
 .win-count-value {
-  /* text-align: start; */
+  text-align: start;
+  font-size: 1.7em;
 
-  width: 5em;
+  padding-left: 2em;
+
+  /* width: 70%em; */
 
   /* border: 2px solid;   */
 }
@@ -224,4 +227,41 @@ img {
 
 .b-start { 
   background-image: url("./images/dice-2.png");;
+}
+
+/* modal */
+
+.modal {
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: rgb(0, 128, 0, 1);
+
+  padding: 20px;
+  border: 1px solid #888;
+
+  width: 350px;
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color:  grey;
+  text-decoration: none;
+  cursor: pointer;
 }

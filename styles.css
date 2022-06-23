@@ -64,7 +64,7 @@
 }
 
 .score {
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
 
   font-weight: bold;
   font-size: 60px;
@@ -75,7 +75,7 @@
 
 .info {
   text-align: end;
-  padding: 0.5rem 2.5rem;
+  padding: 1rem 1.5rem;
 
   /* border: 2px solid;   */
 
@@ -172,7 +172,7 @@ img {
   to    { transform: translateZ(-5em) rotateY(360deg); }
 }
 
-/* initial screen dice and overlay */
+/* overlay and die */
 
 #overlay {
   background-color: white;

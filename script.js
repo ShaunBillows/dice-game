@@ -5,20 +5,6 @@ const background = document.querySelector(".game")
 const score_ = document.querySelector(".score")
 const highScore_ = document.querySelector(".high-score-value")
 
-const infoMessage = document.querySelector(".info-message")
-const infoIcon = document.querySelector(".info-icon")
-infoMessageShowing = false
-
-infoIcon.addEventListener("click", () => {
-    if (infoMessageShowing) {
-        infoMessageShowing = false
-        infoMessage.style.display = 'none'
-    } else {
-        infoMessageShowing = true
-        infoMessage.style.display = 'block'
-    }
-})
-
 // game stats
 let score = 0
 let highScore = 0
@@ -38,12 +24,14 @@ const options = {
 
 // console.log(Array.from(Array(6).keys()).map(i => `url("./images/dice-${i+1}.png")`))
 
-// dice game
 
+
+// dice game
 for (let i=0; i<dice.length; i++) {
 
     dice[i].addEventListener("click", () => {
 
+        // game fucntions
         replayAnimation(dice[i])
         rollDice(front[i])
         incrementScore()
@@ -51,7 +39,8 @@ for (let i=0; i<dice.length; i++) {
         if (diceRoll == 1) {
 
             setTimeout( ()=>{ 
-                
+
+                // game over functions
                 flashScreen()
                 replayAllAnimations()
                 checkHighScore()
@@ -61,8 +50,9 @@ for (let i=0; i<dice.length; i++) {
     }, false)
 }
 
-// game fucntions
 
+
+// game fucntions
 function replayAnimation(animation) {
     animation.style.animationName = 'none'
     requestAnimationFrame( () => {
@@ -80,10 +70,9 @@ function incrementScore() {
     score_.innerHTML = score
 }
 
-// gameover functions
-
+// game over functions
 function flashScreen() {
-    // fix to stop the screen flashing when the initial, homescreen die is click
+    // fix to stop the screen flashing red when the homescreen die is click
     if (firstClick) {
         return
     }
@@ -112,6 +101,8 @@ function checkHighScore() {
     }
 }
 
+
+
 // overlay
 firstClick = true
 window.addEventListener('click', () => {
@@ -120,5 +111,20 @@ window.addEventListener('click', () => {
         replayAllAnimations()
         resetScore()
         firstClick = false
+    }
+})
+
+// game instructions 
+const infoMessage = document.querySelector(".info-message")
+const infoIcon = document.querySelector(".info-icon")
+infoMessageShowing = false
+
+infoIcon.addEventListener("click", () => {
+    if (infoMessageShowing) {
+        infoMessageShowing = false
+        infoMessage.style.display = 'none'
+    } else {
+        infoMessageShowing = true
+        infoMessage.style.display = 'block'
     }
 })

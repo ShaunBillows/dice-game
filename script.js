@@ -3,12 +3,12 @@ const dice = document.querySelectorAll(".dice")
 const front = document.querySelectorAll(".front")
 const background = document.querySelector(".game")
 const score_ = document.querySelector(".score")
-const highScore_ = document.querySelector(".high-score-value")
+const winCount_ = document.querySelector(".win-count-value")
 
 // game stats
 let score = 0
-let highScore = 0
 let diceRoll = 1
+let winCount = 0
 
 // dice roll options
 const options = {
@@ -20,9 +20,15 @@ const options = {
     6: 'url("./images/dice-6.png")'
 }
 
-// const options = Array.from(Array(6).keys()).map(i => `url("./images/dice-${i+1}.png")`)
-
-// console.log(Array.from(Array(6).keys()).map(i => `url("./images/dice-${i+1}.png")`))
+// keep track of dice states
+let diceStates = {
+    1: 0, 
+    2: 0, 
+    3: 0, 
+    4: 0, 
+    5: 0, 
+    6: 0
+}
 
 
 
@@ -34,25 +40,45 @@ for (let i=0; i<dice.length; i++) {
         // game fucntions
         replayAnimation(dice[i])
         rollDice(front[i])
-        incrementScore()
-
+        updateDiceState(i)
+        updateScore()
+        
         if (diceRoll == 1) {
 
             setTimeout( ()=>{ 
 
                 // game over functions
-                flashScreen()
+                flashScreen('red', 300)
                 replayAllAnimations()
-                checkHighScore()
-                resetScore()            
+                resetScore()  
+                resetDiceStates()
             
-            },1000)}
-    }, false)
+            }, 1000) 
+        } 
+            
+        else if (score == 21) {
+
+            setTimeout( () => {
+                
+                // winning functions
+                flashScreen('green', 600)
+                replayAllAnimations()
+                youWinAlert()
+                resetScore()    
+                resetDiceStates()
+                updateWinCount()
+
+            }, 1000)  
+        }
+
+    })
 }
 
 
 
-// game fucntions
+
+// game functions
+
 function replayAnimation(animation) {
     animation.style.animationName = 'none'
     requestAnimationFrame( () => {
@@ -65,21 +91,35 @@ function rollDice(frontFace) {
     frontFace.style.backgroundImage = options[diceRoll]
 }
 
-function incrementScore() {
-    score += diceRoll
-    score_.innerHTML = score
+function updateDiceState(num) {
+    // note: the initial die on the homescreen is dice[0]
+    diceStates[num] = diceRoll
+}
+
+function updateScore() {
+    sum = 0
+    for (let i=1; i<Object.keys(diceStates).length; i++) {
+        sum += Number(diceStates[i])
+    }
+    score = sum
+    setTimeout( () => {
+
+        score_.innerHTML = score
+
+    }, 900)
 }
 
 // game over functions
-function flashScreen() {
+
+function flashScreen(color, time) {
     // fix to stop the screen flashing red when the homescreen die is click
     if (firstClick) {
         return
     }
-    background.style.background = 'red'
+    background.style.background = color
     setTimeout( () => {
         background.style.background = 'none'
-    }, 300)
+    }, time)
 }
 
 function replayAllAnimations() {
@@ -94,12 +134,24 @@ function resetScore() {
     score_.innerHTML = 0
 }
 
-function checkHighScore() {
-    if (score > highScore) {
-        highScore = score
-        highScore_.innerHTML = score
+function resetDiceStates() {
+    for (let i=1; i<Object.keys(diceStates).length; i++) {
+        diceStates[i] = 0
     }
 }
+
+// you win functions
+
+function youWinAlert() {
+    alert("YOU WIN!")
+}
+
+function updateWinCount() {
+    winCount += 1
+    winCount_ .innerHTML = winCount
+}
+
+
 
 
 

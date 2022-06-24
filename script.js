@@ -46,15 +46,19 @@ for (let i = 0; i < dice.length; i++) {
 
         if (diceRoll == 1) {
 
-            setTimeout(() => {
+            setTimeout( () => {
 
                 // game over functions
-                flashScreen('red', 10)
+                // flashScreen('red', 10)
                 replayAllAnimations()
                 resetScore()
                 resetDiceStates()
 
+                flashDie(front[i], 100, 0)
+
             }, 1000)
+
+
         }
 
         else if (score == 21) {
@@ -122,6 +126,27 @@ const flashScreen = (color, time) => {
         background.style.background = 'none'
         background.style.backgroundImage = 'url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80)'
     }, time)
+}
+
+const flashDie = (frontFace, flashTime, delay) => {
+    // fix to stop the screen flashing red when the homescreen die is click
+    if (firstClick) {
+        return
+    }
+    setTimeout( () => {
+
+        frontFace.style.backgroundImage = 'none'
+        frontFace.style.background = 'red'
+    
+        setTimeout(() => {
+    
+            frontFace.style.background = 'none'
+            frontFace.style.backgroundImage = options[1]
+            frontFace.style.backgroundSize = 'cover'
+    
+        }, flashTime)
+        
+    }, delay)
 }
 
 const replayAllAnimations = () => {

@@ -61,7 +61,6 @@ for (let i = 0; i < dice.length; i++) {
             setTimeout(() => {
 
                 // winning functions
-                // flashScreen('green', 300)
                 replayAllAnimations()
                 youWinAlert()
                 resetScore()

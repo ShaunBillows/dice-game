@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="./styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="title bar icon" href="./images/dice-6.png" />
-
   <title>Dice Game</title>
 </head>
 <body>
-
+  <!-- overlay -->
   <div id="overlay">
-
     <h1 class="welcome">WELCOME</h1>
     <div class="scene">
       <div class="dice dice-start">
@@ -25,31 +21,24 @@
       </div>
     </div>
   </div>
-
   <div class="game">
-
-    <!-- The Modal -->
+    <!-- Modal -->
     <div id="myModal" class="modal">
-
-      <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
         <p>Congradulations! <br>You Won!</p>
       </div>
-
     </div>
-
-    <div class="info-message">
-      <h2>Roll 21 to win, <br>but don't roll a 1!</h2>
-    </div>
-
+    <!-- game info  -->
     <div class="game-stats">
       <div class="game-stat-item win-count"><h2>Win Count</h2><div  class="win-count-value">0</div></div>
       <h2 class="game-stat-item score">0</h2>
       <div class="game-stat-item info"><img class="info-icon" src="./images/info-icon-black.png" alt=""></div>
     </div>
-
-  
+    <div class="info-message">
+      <h2>Roll 21 to win, <br>but don't roll a 1!</h2>
+    </div>
+    <!-- the dice -->
     <div class="dice-container">
       <div class="scene">
         <div class="dice">
@@ -93,7 +82,6 @@
       </div>
     </div>
   </div>
-
   <script src="./script.js"></script>
 </body>
 </html>

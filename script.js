@@ -33,6 +33,7 @@ let diceStates = {
 
 
 // dice game
+
 for (let i = 0; i < dice.length; i++) {
 
     dice[i].addEventListener("click", () => {
@@ -48,7 +49,7 @@ for (let i = 0; i < dice.length; i++) {
             setTimeout(() => {
 
                 // game over functions
-                // flashScreen('red', 300)
+                flashScreen('red', 10)
                 replayAllAnimations()
                 resetScore()
                 resetDiceStates()
@@ -78,31 +79,31 @@ for (let i = 0; i < dice.length; i++) {
 
 // game functions
 
-function replayAnimation(animation) {
+const replayAnimation = (animation) => {
     animation.style.animationName = 'none'
     requestAnimationFrame(() => {
         animation.style.animationName = ""
     })
 }
 
-function rollDice(frontFace) {
+const rollDice = (frontFace) => {
     diceRoll = Math.floor(Math.random() * Object.keys(options).length + 1)
-    console.log(Object.keys(options).length, options.length)
     frontFace.style.backgroundImage = options[diceRoll]
 }
 
-function updateDiceState(num) {
+const updateDiceState = (num) => {
     // note: the initial die on the homescreen is dice[0]
     diceStates[num] = diceRoll
 }
 
-function updateScore() {
+const updateScore = () => {
     sum = 0
     for (let i = 1; i < Object.keys(diceStates).length; i++) {
         sum += Number(diceStates[i])
     }
     score = sum
-    setTimeout(() => {
+    
+    setTimeout( () => {
 
         score_.innerHTML = score
 
@@ -111,7 +112,7 @@ function updateScore() {
 
 // game over functions
 
-function flashScreen(color, time) {
+const flashScreen = (color, time) => {
     // fix to stop the screen flashing red when the homescreen die is click
     if (firstClick) {
         return
@@ -119,22 +120,23 @@ function flashScreen(color, time) {
     background.style.background = color
     setTimeout(() => {
         background.style.background = 'none'
+        background.style.backgroundImage = 'url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80)'
     }, time)
 }
 
-function replayAllAnimations() {
+const replayAllAnimations = () => {
     for (let i = 0; i < Object.keys(dice).length; i++) {
         replayAnimation(dice[i])
         front[i].style.backgroundImage = options[1]
     }
 }
 
-function resetScore() {
+const resetScore = () => {
     score = 0
     score_.innerHTML = 0
 }
 
-function resetDiceStates() {
+const resetDiceStates = () => {
     for (let i = 1; i < Object.keys(diceStates).length; i++) {
         diceStates[i] = 0
     }
@@ -142,15 +144,14 @@ function resetDiceStates() {
 
 // you win functions
 
-function youWinAlert() {
+const youWinAlert = () => {
     modal.style.display = "flex"
 }
 
-function updateWinCount() {
+const updateWinCount = () => {
     winCount += 1
     winCount_.innerHTML = winCount
 }
-
 
 
 

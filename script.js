@@ -12,28 +12,28 @@ let winCount = 0
 
 // dice roll options
 const options = {
-    1: 'url("./images/dice-1.png")', 
-    2: 'url("./images/dice-2.png")', 
-    3: 'url("./images/dice-3.png")', 
-    4: 'url("./images/dice-4.png")', 
-    5: 'url("./images/dice-5.png")', 
+    1: 'url("./images/dice-1.png")',
+    2: 'url("./images/dice-2.png")',
+    3: 'url("./images/dice-3.png")',
+    4: 'url("./images/dice-4.png")',
+    5: 'url("./images/dice-5.png")',
     6: 'url("./images/dice-6.png")'
 }
 
 // keep track of dice states
 let diceStates = {
-    1: 0, 
-    2: 0, 
-    3: 0, 
-    4: 0, 
-    5: 0, 
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
     6: 0
 }
 
 
 
 // dice game
-for (let i=0; i<dice.length; i++) {
+for (let i = 0; i < dice.length; i++) {
 
     dice[i].addEventListener("click", () => {
 
@@ -42,33 +42,33 @@ for (let i=0; i<dice.length; i++) {
         rollDice(front[i])
         updateDiceState(i)
         updateScore()
-        
+
         if (diceRoll == 1) {
 
-            setTimeout( ()=>{ 
+            setTimeout(() => {
 
                 // game over functions
-                flashScreen('red', 300)
+                // flashScreen('red', 300)
                 replayAllAnimations()
-                resetScore()  
+                resetScore()
                 resetDiceStates()
-            
-            }, 1000) 
-        } 
-            
+
+            }, 1000)
+        }
+
         else if (score == 21) {
 
-            setTimeout( () => {
-                
+            setTimeout(() => {
+
                 // winning functions
-                flashScreen('green', 300)
+                // flashScreen('green', 300)
                 replayAllAnimations()
                 youWinAlert()
-                resetScore()    
+                resetScore()
                 resetDiceStates()
                 updateWinCount()
 
-            }, 1000)  
+            }, 1000)
         }
 
     })
@@ -81,13 +81,14 @@ for (let i=0; i<dice.length; i++) {
 
 function replayAnimation(animation) {
     animation.style.animationName = 'none'
-    requestAnimationFrame( () => {
+    requestAnimationFrame(() => {
         animation.style.animationName = ""
     })
 }
 
 function rollDice(frontFace) {
     diceRoll = Math.floor(Math.random() * Object.keys(options).length + 1)
+    console.log(Object.keys(options).length, options.length)
     frontFace.style.backgroundImage = options[diceRoll]
 }
 
@@ -98,11 +99,11 @@ function updateDiceState(num) {
 
 function updateScore() {
     sum = 0
-    for (let i=1; i<Object.keys(diceStates).length; i++) {
+    for (let i = 1; i < Object.keys(diceStates).length; i++) {
         sum += Number(diceStates[i])
     }
     score = sum
-    setTimeout( () => {
+    setTimeout(() => {
 
         score_.innerHTML = score
 
@@ -117,13 +118,13 @@ function flashScreen(color, time) {
         return
     }
     background.style.background = color
-    setTimeout( () => {
+    setTimeout(() => {
         background.style.background = 'none'
     }, time)
 }
 
 function replayAllAnimations() {
-    for (let i=0; i<Object.keys(dice).length; i++) {
+    for (let i = 0; i < Object.keys(dice).length; i++) {
         replayAnimation(dice[i])
         front[i].style.backgroundImage = options[1]
     }
@@ -135,7 +136,7 @@ function resetScore() {
 }
 
 function resetDiceStates() {
-    for (let i=1; i<Object.keys(diceStates).length; i++) {
+    for (let i = 1; i < Object.keys(diceStates).length; i++) {
         diceStates[i] = 0
     }
 }
@@ -148,7 +149,7 @@ function youWinAlert() {
 
 function updateWinCount() {
     winCount += 1
-    winCount_ .innerHTML = winCount
+    winCount_.innerHTML = winCount
 }
 
 
@@ -160,7 +161,7 @@ firstClick = true
 window.addEventListener('click', () => {
     overlay.style.display = "none";
     if (firstClick) {
-        replayAllAnimations()
+        // replayAllAnimations()
         resetScore()
         firstClick = false
     }
@@ -182,7 +183,7 @@ infoIcon.addEventListener("click", () => {
 })
 
 // close modal
-const modelClose =  document.querySelector(".close")
+const modelClose = document.querySelector(".close")
 const modal = document.querySelector(".modal")
 
 modelClose.addEventListener("click", () => {

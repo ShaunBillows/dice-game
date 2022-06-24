@@ -49,16 +49,12 @@ for (let i = 0; i < dice.length; i++) {
             setTimeout( () => {
 
                 // game over functions
-                // flashScreen('red', 10)
                 replayAllAnimations()
                 resetScore()
                 resetDiceStates()
-
                 flashDie(front[i], 100, 0)
 
             }, 1000)
-
-
         }
 
         else if (score == 21) {
@@ -117,7 +113,7 @@ const updateScore = () => {
 // game over functions
 
 const flashDie = (frontFace, flashTime, delay) => {
-    // fix to stop the screen flashing red when the homescreen die is click
+    // fix to stop the homescreen die flashing red
     if (firstClick) {
         return
     }
@@ -154,7 +150,7 @@ const resetDiceStates = () => {
     }
 }
 
-// you win functions
+// winning functions
 
 const youWinAlert = () => {
     modal.style.display = "flex"

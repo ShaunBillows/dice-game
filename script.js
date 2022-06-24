@@ -116,18 +116,6 @@ const updateScore = () => {
 
 // game over functions
 
-const flashScreen = (color, time) => {
-    // fix to stop the screen flashing red when the homescreen die is click
-    if (firstClick) {
-        return
-    }
-    background.style.background = color
-    setTimeout(() => {
-        background.style.background = 'none'
-        background.style.backgroundImage = 'url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80)'
-    }, time)
-}
-
 const flashDie = (frontFace, flashTime, delay) => {
     // fix to stop the screen flashing red when the homescreen die is click
     if (firstClick) {
@@ -135,12 +123,11 @@ const flashDie = (frontFace, flashTime, delay) => {
     }
     setTimeout( () => {
 
-        frontFace.style.backgroundImage = 'none'
-        frontFace.style.background = 'red'
+        frontFace.style.backgroundImage = 'url("./images/dice-1-red.png")'
+        frontFace.style.backgroundSize = 'cover'
     
         setTimeout(() => {
     
-            frontFace.style.background = 'none'
             frontFace.style.backgroundImage = options[1]
             frontFace.style.backgroundSize = 'cover'
     

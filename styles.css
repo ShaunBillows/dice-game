@@ -54,6 +54,7 @@
 
   font-weight: bold;
   font-size: 60px;
+  cursor: pointer;
 
   align-self: flex-end;
 }

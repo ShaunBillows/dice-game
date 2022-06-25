@@ -32,7 +32,7 @@ let diceStates = {
 
 
 
-// dice game
+// the game
 
 for (let i = 0; i < dice.length; i++) {
 
@@ -40,9 +40,9 @@ for (let i = 0; i < dice.length; i++) {
 
         // game fucntions
         replayAnimation(dice[i])
-        rollDice(front[i])
+        rollDice(front[i], 200)
         updateDiceState(i)
-        updateScore()
+        updateScore(800)
 
         if (diceRoll == 1) {
 
@@ -52,7 +52,7 @@ for (let i = 0; i < dice.length; i++) {
                 replayAllAnimations()
                 resetScore()
                 resetDiceStates()
-                flashDie(front[i], 100, 0)
+                flashDice(front[i], 300, 0)
 
             }, 1000)
         }
@@ -86,9 +86,11 @@ const replayAnimation = (animation) => {
     })
 }
 
-const rollDice = (frontFace) => {
-    diceRoll = Math.floor(Math.random() * Object.keys(options).length + 1)
-    frontFace.style.backgroundImage = options[diceRoll]
+const rollDice = (frontFace, delay) => {
+    diceRoll = Math.ceil(Math.random() * Object.keys(options).length)
+    setTimeout( () => {
+        frontFace.style.backgroundImage = options[diceRoll]
+    }, delay)
 }
 
 const updateDiceState = (num) => {
@@ -96,7 +98,7 @@ const updateDiceState = (num) => {
     diceStates[num] = diceRoll
 }
 
-const updateScore = () => {
+const updateScore = (delay) => {
     sum = 0
     for (let i = 1; i < Object.keys(diceStates).length; i++) {
         sum += Number(diceStates[i])
@@ -107,12 +109,12 @@ const updateScore = () => {
 
         score_.innerHTML = score
 
-    }, 900)
+    }, delay)
 }
 
 // game over functions
 
-const flashDie = (frontFace, flashTime, delay) => {
+const flashDice = (frontFace, flashTime, delay) => {
     // fix to stop the homescreen die flashing red
     if (firstClick) {
         return
@@ -134,6 +136,7 @@ const flashDie = (frontFace, flashTime, delay) => {
 
 const replayAllAnimations = () => {
     for (let i = 0; i < Object.keys(dice).length; i++) {
+
         replayAnimation(dice[i])
         front[i].style.backgroundImage = options[1]
     }
@@ -169,7 +172,6 @@ firstClick = true
 window.addEventListener('click', () => {
     overlay.style.display = "none";
     if (firstClick) {
-        // replayAllAnimations()
         resetScore()
         firstClick = false
     }

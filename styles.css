@@ -166,14 +166,15 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
+  gap: 1rem;
   position: absolute;
 }
 
 .welcome {
   font-size: 50px;
 
-  position: absolute;
+  /* position: absolute; */
   top: 30%;
 }
 

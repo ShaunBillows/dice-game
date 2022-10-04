@@ -154,7 +154,7 @@ window.addEventListener("click", () => {
 // game instructions
 const infoMessage = document.querySelector(".info-message");
 const infoIcon = document.querySelector(".info-icon");
-infoMessageShowing = false;
+let infoMessageShowing = false;
 
 infoIcon.addEventListener("click", () => {
   if (infoMessageShowing) {

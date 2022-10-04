@@ -7,13 +7,21 @@
   font-family: "Poppins", sans-serif;
   text-align: center;
   color: white;
-  /* outline: 1px solid limegreen !important; */
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80);
+  background-position: 0vh 0vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game {
-  background-image: url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80);
-  background-position: 0vh 0vh;
+  /* background-image: url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80);
+  background-position: 0vh 0vh; */
 
+  max-width: 1000px;
   height: 100vh;
   padding: 25vh 0vw;
 
@@ -24,7 +32,7 @@
 }
 
 .game-stats {
-  width: 80vw;
+  width: 100%;
   height: 25vh;
 
   font-weight: bold;
@@ -42,10 +50,9 @@
 }
 
 .win-count-value {
-  text-align: start;
+  text-align: center;
   font-size: 1.7em;
-
-  padding-left: 2em;
+  width: 4.5em;
 }
 
 .score {
@@ -78,12 +85,15 @@ img {
 }
 
 .dice-container {
-  width: 80vw;
+  width: 100%;
+  padding: 1rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
+  margin-bottom: 25vh;
 }
 
 /* game dice */
@@ -146,16 +156,18 @@ img {
 /* overlay and homescreen die */
 
 #overlay {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  padding-top: 10vh;
-  z-index: 5;
+  /* padding-top: 10vh; */
+  z-index: 10;
 
   background-image: url(https://images.unsplash.com/photo-1633218388467-539651dcf81f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80);
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
 }
 
 .welcome {
@@ -222,4 +234,35 @@ img {
   color: grey;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (max-width: 1080px) {
+  .game {
+    padding: 10vh;
+  }
+  .dice-container {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .game {
+    padding: 1rem;
+    height: 100%;
+    min-height: 100vh;
+  }
+  #overlay {
+    height: 200vh;
+    width: 100vw;
+  }
+}
+@media (max-width: 450px) {
+  .win-count-value {
+    font-size: 1.2em;
+    width: 5.5em;
+  }
+  .win-count h2 {
+    margin-top: 0.5rem;
+    font-size: 1.1em;
+  }
 }
